@@ -4,9 +4,9 @@ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 RAND_CLR=$(($RANDOM%257))
 
 if [[ $UID -eq 0 ]]; then
-    local user_host='%{$terminfo[bold]$FG[$(($RANDOM%257))]%}%n@%m%{$reset_color%}'
+    local user_host='%{$terminfo[bold]$FG[$(($RANDOM%257))]%}%n@%M%{$reset_color%}'
 else
-    local user_host='%{$terminfo[bold]$FG[196]%}%n@%m%{$reset_color%}'
+    local user_host='%{$terminfo[bold]$FG[196]%}%n@%M%{$reset_color%}'
 fi
 
 local current_dir='%{$terminfo[bold]$FG[201]%} %~%{$reset_color%}'
