@@ -8,7 +8,7 @@ if [[ $UID -eq 0 ]]; then
 else
     if hostname | grep -q api; then
       hundred_prompt_color="$FG[226]"
-    elif hostname | grep cms; then
+    elif hostname | grep -q cms; then
       hundred_prompt_color="$FG[069]"
     fi
     local user_host='%{$terminfo[bold]$hundred_prompt_color%}%n@%M%{$reset_color%}'
