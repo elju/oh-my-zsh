@@ -4,9 +4,14 @@ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 RAND_CLR=$(($RANDOM%257))
 
 if [[ $UID -eq 0 ]]; then
-    local user_host='%{$terminfo[bold]$FG[$(($RANDOM%257))]%}%n@%M%{$reset_color%}'
+    local user_host='%{$terminfo[bold]$FG[010]%}%n@%M%{$reset_color%}'
 else
-    local user_host='%{$terminfo[bold]$FG[196]%}%n@%M%{$reset_color%}'
+    if hostname | grep -q api; then
+      hundred_prompt_color="$FG[226]"
+    elif hostname | grep cms; then
+      hundred_prompt_color="$FG[069]"
+    fi
+    local user_host='%{$terminfo[bold]$hundred_prompt_color%}%n@%M%{$reset_color%}'
 fi
 
 local current_dir='%{$terminfo[bold]$FG[201]%} %~%{$reset_color%}'
