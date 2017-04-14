@@ -6,14 +6,14 @@ RAND_CLR=$(($RANDOM%257))
 if hostname | grep -q api; then
   if [[ $UID -eq 0 ]]; then
     hundred_prompt_color="$FG[016]"
-    hundred_prompt_bg="$BG[001]"
+    hundred_prompt_bg="$BG[011]"
   else
     hundred_prompt_color="$FG[226]"
   fi
 elif hostname | grep -q cms; then
   if [[ $UID -eq 0 ]]; then
     hundred_prompt_color="$FG[016]"
-    hundred_prompt_bg="$BG[006]"
+    hundred_prompt_bg="$BG[004]"
   else
     hundred_prompt_color="$FG[069]"
   fi
