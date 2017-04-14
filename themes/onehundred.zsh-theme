@@ -3,16 +3,22 @@ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
 RAND_CLR=$(($RANDOM%257))
 
-if [[ $UID -eq 0 ]]; then
-    local user_host='%{$terminfo[bold]$FG[010]%}%n@%M%{$reset_color%}'
-else
-    if hostname | grep -q api; then
-      hundred_prompt_color="$FG[226]"
-    elif hostname | grep -q cms; then
-      hundred_prompt_color="$FG[069]"
-    fi
-    local user_host='%{$terminfo[bold]$hundred_prompt_color%}%n@%M%{$reset_color%}'
+if hostname | grep -q api; then
+  if [[ $UID -eq 0 ]]; then
+    hundred_prompt_color="$FG[016]"
+    hundred_prompt_bg="$BG[001]"
+  else
+    hundred_prompt_color="$FG[226]"
+  fi
+elif hostname | grep -q cms; then
+  if [[ $UID -eq 0 ]]; then
+    hundred_prompt_color="$FG[016]"
+    hundred_prompt_bg="$BG[006]"
+  else
+    hundred_prompt_color="$FG[069]"
+  fi
 fi
+local user_host='%{$terminfo[bold]$hundred_prompt_bg$hundred_prompt_color%}%n@%M%{$reset_color%}'
 
 local current_dir='%{$terminfo[bold]$FG[201]%} %~%{$reset_color%}'
 local rvm_ruby=''
