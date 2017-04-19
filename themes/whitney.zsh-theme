@@ -32,8 +32,7 @@ fi
 
 local git_branch='%{$FG[243]$BG[234]%}$(git_prompt_info)%{$reset_color%}'
 
-PROMPT="╭─${user_host} ${current_dir} ${rvm_ruby} ${git_branch}%{$FG[015] \|\| \/\/ |/|/ %}%{$reset_color%}
-╰─ ~ "
+PROMPT="${user_host}${current_dir} ${rvm_ruby} ${git_branch}%{$reset_color%}%{$FG[246]%}\$ %{$reset_color%}"
 RPS1="${return_code}"
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$FX[bold]%}‹"
